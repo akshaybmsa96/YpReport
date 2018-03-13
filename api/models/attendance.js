@@ -4,12 +4,13 @@ var mongoose = require('mongoose');
 
 var attendanceSchema = mongoose.Schema({
 
-  
+
     employeeId : String,
     name : String,
     attendance : Number,
     date : String,
-    centre : String
+    centre : String,
+    centreId : String
 
 }, {
   versionKey: false

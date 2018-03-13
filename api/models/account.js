@@ -7,7 +7,8 @@ var accountSchema = mongoose.Schema({
     accountName : String,
     type : String,
     currentBalance : Number,
-    centre : String
+    centre : String,
+    centreId : String
 
 }, {
   versionKey: false

@@ -12,6 +12,7 @@ var expenseSchema = mongoose.Schema({
       from  : String,
       to  : String,
       amount : Number,
+      centreId : String,
       centre : String
 
 }, {

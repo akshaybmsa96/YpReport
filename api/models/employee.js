@@ -12,6 +12,7 @@ phoneNumber: String,
 address : String,
 salary : Number,
 centre : String,
+centreId : String,
 leavesPerMonth : Number,
 aadhaarNumber : String,
 currentBalance : Number

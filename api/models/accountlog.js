@@ -8,7 +8,8 @@ var accountLogSchema = mongoose.Schema({
     fromAc : String,
     toAc : String,
     amount : Number,
-    centre : String
+    centre : String,
+    centreId : String
 
 }, {
   versionKey: false

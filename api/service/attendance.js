@@ -8,17 +8,17 @@ module.exports.submitAttendance=function(data,callback){
 }
 
 module.exports.removeTodayAttendance=function(date,centre,callback){
-  Attendance.remove({$and : [{date : date},{centre : centre}]},callback);
+  Attendance.remove({$and : [{date : date},{centreId : centre}]},callback);
 }
 
 module.exports.getAttendance = function(centre,fromdate,todate,callback){
-  Attendance.aggregate([{$match: {$and : [{ date: { $gte: fromdate}}, {date : {$lte: todate}},{centre : centre} ]}},
+  Attendance.aggregate([{$match: {$and : [{ date: { $gte: fromdate}}, {date : {$lte: todate}},{centreId : centre} ]}},
     {$group : { _id : { "employeeId" : "$employeeId", "name" : "$name"},attendanceTotal : {$sum : "$attendance"}}}],callback);
 }
 
 
 module.exports.getEmployeeAttendance = function(id,centre,fromdate,todate,callback){
-  Attendance.find({$and : [{employeeId : id },{ date: { $gte: fromdate}}, {date : {$lte: todate}},{centre : centre}]},callback).sort( { date : -1 });
+  Attendance.find({$and : [{employeeId : id },{ date: { $gte: fromdate}}, {date : {$lte: todate}},{centreId : centre}]},callback).sort( { date : -1 });
 }
 
 

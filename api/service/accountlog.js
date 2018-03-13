@@ -8,5 +8,5 @@ module.exports.addLog=function(data,callback){
 }
 
 module.exports.getLog=function(centre,fromdate,todate,callback){
-  AccountLog.find({$and : [{ date: { $gte: fromdate}}, {date : {$lte: todate}},{centre : centre} ]},callback).sort( { date : -1 });
+  AccountLog.find({$and : [{ date: { $gte: fromdate}}, {date : {$lte: todate}},{centreId : centre} ]},callback).sort( { date : -1 });
 }

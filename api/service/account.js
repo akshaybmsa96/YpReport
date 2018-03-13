@@ -9,7 +9,7 @@ module.exports.addAccount=function(data,callback){
 
 
 module.exports.getAccounts=function(centre,callback){
-  Account.find({centre : centre},callback);
+  Account.find({centreId : centre},callback);
 }
 
 

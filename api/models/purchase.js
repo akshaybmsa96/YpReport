@@ -11,6 +11,7 @@ var purchaseSchema = mongoose.Schema({
        discount : Number,
        amount : Number,
        centre : String,
+       centreId : String,
        unit : String
 
 }, {

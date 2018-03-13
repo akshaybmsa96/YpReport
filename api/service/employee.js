@@ -7,7 +7,7 @@ module.exports.addemployee=function(data,callback){
 }
 
 module.exports.getemployee=function(centre,callback){
-  Employee.find({centre : centre},callback);
+  Employee.find({centreId : centre},callback);
 }
 
 

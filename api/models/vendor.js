@@ -10,6 +10,7 @@ gstNumber : String,
 creditLimit : Number,
 phoneNumber : String,
 centre : String,
+centreId : String,
 currentBalance: Number
 
 }, {
