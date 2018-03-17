@@ -16,10 +16,11 @@ var accountLog = require('../controllers/accountlog');
 module.exports = function(app) {
 
 //items routes
-app.get('/api/items/',items.getItems);
+app.get('/api/items/centreId=:centreId&centreAdminId=:centreAdminId',items.getItems);
 app.get('/api/items/id=:_id',items.getItemById);
 app.get('/api/items/itemName=:itemName',items.getItemByName);
 app.post('/api/items/',items.addItem);
+app.put('/api/items',items.updateItem);
 
 //user report Routes
 
@@ -29,7 +30,8 @@ app.get('/api/todayreport/centre=:centre&date=:date',report.getTodayreport);
 app.post('/api/report/',report.submitreport);
 
 //admin report routes
-app.get('/api/report/fromdate=:fromdate&todate=:todate',report.getCentrereport);
+app.get('/api/reportAdmin/centreAdminId=:centreAdminId&fromdate=:fromdate&todate=:todate',report.getAdminCentrereport);
+app.get('/api/itemUsageAdminreport/centreAdminId=:centreAdminId&fromdate=:fromdate&todate=:todate',report.getAdminItemUsagereport);
 
 
 
@@ -70,10 +72,13 @@ app.delete('/api/attendance/date=:date&centre=:centre',attendance.removeTodayAtt
 app.get('/api/attendance/centre=:centre&fromdate=:fromdate&todate=:todate',attendance.getAttendance);
 app.get('/api/attendancedetail/id=:id&centre=:centre&fromdate=:fromdate&todate=:todate',attendance.getEmployeeAttendance);
 
-
+//centre
+app.post('/api/store/',centre.addstore);
+app.put('/api/store/',centre.updatestore);
+app.get('/api/store/adminId=:adminId',centre.getstores);
 //login
+app.get('/api/login/centrecode=:centrecode&not=:not',centre.login);
 
-app.get('/api/login/centrecode=:centrecode',centre.login);
 
 
 

@@ -4,9 +4,17 @@ var mongoose = require('mongoose');
 
 var centreSchema = mongoose.Schema({
 
-  _id : String,
+
   centre : String,
-  centreCode : String
+  centreCode : String,
+  type : String,
+  creditLimit : Number,
+  gstNumber : String,
+  centreCode : String,
+  phoneNumber : String,
+  currentBalance : Number,
+  adminId : String
+
 
 }, {
   versionKey: false

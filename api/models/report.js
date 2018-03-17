@@ -6,6 +6,8 @@ var reportSchema = mongoose.Schema({
 
 id: String,
 centre : String,
+centreId : String,
+centreAdminId  : String,
 date : String,
 orders : Number,
 sale : Number,

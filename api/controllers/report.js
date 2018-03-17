@@ -68,3 +68,33 @@ Report.getItemUsagereport(req.params.centre,req.params.fromdate,req.params.todat
 
 });
 };
+
+//admin Report
+exports.getAdminCentrereport = function(req,res){
+Report.getAdminCentrereport(req.params.centreAdminId,req.params.fromdate,req.params.todate,function(err,data){
+  if(err)
+  {
+    throw err;
+  }
+
+  else{
+    res.json(data);
+  }
+
+});
+};
+
+
+exports.getAdminItemUsagereport = function(req,res){
+Report.getAdminItemUsagereport(req.params.centreAdminId,req.params.fromdate,req.params.todate,function(err,data){
+  if(err)
+  {
+    throw err;
+  }
+
+  else{
+    res.json(data);
+  }
+
+});
+};

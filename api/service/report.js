@@ -21,7 +21,7 @@ module.exports.getCentrereport=function(centre,fromdate,todate,callback){
 
 module.exports.getCentrereport = function(centre,fromdate,todate,callback){
   Report.aggregate([{$match: {$and : [{ date: { $gte: fromdate}}, {date : {$lte: todate}},{centreId : centre} ]}},
-    {$group : {_id : "$centre",sale : {$sum : "$sale"},
+    {$group : {_id : "$centreId",sale : {$sum : "$sale"},
   orders : { $sum : "$orders"}, materialCost : {$sum : "$materialCost"}}}],callback);
 }
 
@@ -31,6 +31,25 @@ module.exports.getItemUsagereport = function(centre,fromdate,todate,callback){
     {$group : { _id : { "itemName" : "$itemUsage.itemName", "unit" : "$itemUsage.unit"} , qty : { $sum :"$itemUsage.qty"},
     totalItemCost : {$sum : "$itemUsage.totalItemCost"} }}],callback);
 }
+
+
+//admin report
+
+module.exports.getAdminCentrereport = function(centre,fromdate,todate,callback){
+  Report.aggregate([{$match: {$and : [{ date: { $gte: fromdate}}, {date : {$lte: todate}},{centreAdminId : centre} ]}},
+    {$group : {_id : {"centre" : "$centre" , "centreId" : "$centreId"},sale : {$sum : "$sale"},
+  orders : { $sum : "$orders"}, materialCost : {$sum : "$materialCost"}}}],callback);
+}
+
+module.exports.getAdminItemUsagereport = function(centre,fromdate,todate,callback){
+  Report.aggregate([{$match: {$and : [{ date: { $gte: fromdate}}, {date : {$lte: todate}},
+    {centreId : centre} ]}}, {$unwind : "$itemUsage"},
+    {$group : { _id : { "itemName" : "$itemUsage.itemName", "unit" : "$itemUsage.unit"} , qty : { $sum :"$itemUsage.qty"},
+    totalItemCost : {$sum : "$itemUsage.totalItemCost"} }}],callback);
+}
+
+
+//
 
 /*
 

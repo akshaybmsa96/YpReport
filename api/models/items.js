@@ -4,10 +4,15 @@ var mongoose = require('mongoose');
 
 var itemsSchema = mongoose.Schema({
 
-id: String,
-itemName: String,
-cost_per_unit: String,
-unit: String
+itemName : String,
+unit : String,
+purchasePrice : Number,
+sellingPrice : Number,
+costingPrice : Number,
+tax : Number,
+centreId : String,
+centreAdminId : String,
+centre : String
 
 }, {
   versionKey: false

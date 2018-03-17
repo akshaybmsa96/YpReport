@@ -3,7 +3,7 @@ Items = require('../service/items');
 
 
 exports.getItems = function(req,res){
-Items.getItems(function(err,items){
+Items.getItems(req.params.centreId,req.params.centreAdminId,function(err,items){
   if(err)
   {
     throw err;
@@ -47,7 +47,8 @@ Items.getItemByName(req.params.itemName,function(err,item){
 
 //post item
 exports.addItem = function(req,res){
-  var data=req.body;
+  var postData=req.body.data;
+  data = JSON.parse(postData);
 Items.addItem(data,function(err,data){
   if(err)
   {
@@ -55,7 +56,24 @@ Items.addItem(data,function(err,data){
   }
 
   else{
-    res.json(data);
+    res.send("1");
+  }
+
+});
+};
+
+
+exports.updateItem = function(req,res){
+  var postData=req.body.data;
+  data = JSON.parse(postData);
+Items.updateItem(data,function(err,data){
+  if(err)
+  {
+    throw err;
+  }
+
+  else{
+    res.send('1');
   }
 
 });
