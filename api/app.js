@@ -21,6 +21,8 @@ var db=mongoose.connection;
  var CentreModel = require('./models/centre');
  var AccountModel = require('./models/account');
  var AccountLogModel = require('./models/accountlog');
+ var ReceivedPaymentModel = require('./models/receivedpayment');
+ var MaterialDistributionModel = require('./models/materialdistribution');
 
 Routes = require('./config/routes')(app);
 
@@ -30,5 +32,5 @@ app.get('/',function(req,res){
 });
 
 
-app.listen(3000);
+app.listen(3000,'0.0.0.0');
 console.log('Running on 3000');

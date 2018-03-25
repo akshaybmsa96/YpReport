@@ -11,7 +11,7 @@ module.exports.addstore=function(data,callback){
 }
 
 module.exports.getstores=function(adminId,callback){
-    Centre.find({adminId : adminId},callback);
+    Centre.find({adminId : adminId},callback).sort( { currentBalance : -1 });
 }
 
 module.exports.updatestore=function(data,callback){

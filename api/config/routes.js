@@ -10,6 +10,8 @@ var attendance = require('../controllers/attendance');
 var centre = require('../controllers/centre');
 var account = require('../controllers/account');
 var accountLog = require('../controllers/accountlog');
+var receivedpayment = require('../controllers/receivedpayment');
+var materialdistribution = require('../controllers/materialdistribution');
 
 
 
@@ -93,5 +95,17 @@ app.get('/api/accountlog/centre=:centre&fromdate=:fromdate&todate=:todate',accou
 app.post('/api/accountlog/',accountLog.addLog);
 
 
+
+//received receivedPaymentSchema
+
+app.post('/api/receviedpayment/centreId=:centreId&toAcId=:toAcId',receivedpayment.receivedPaymentEntry);
+app.get('/api/receivedpayment/centre=:centre&fromdate=:fromdate&todate=:todate',receivedpayment.getreceivedPaymentEntry);
+
+
+
+//material MaterialDistribution
+
+app.post('/api/materialdistribution/centreId=:centreId&amount=:amount',materialdistribution.materialDistributionEntry);
+app.get('/api/materialdistribution/centre=:centre&fromdate=:fromdate&todate=:todate',materialdistribution.getmaterialDistributionEntry);
 
 }

@@ -16,7 +16,7 @@ module.exports.updateEmployee=function(data,callback) {
 }
 
 module.exports.getEmployeeById=function(id,callback){
-  Employee.findById(id,callback);
+  Employee.findById(id,callback).sort( { currentBalance : 1 });
 }
 
 module.exports.updateBalance=function(id,amount,callback){

@@ -7,7 +7,7 @@ module.exports.addvendor=function(data,callback){
 }
 
 module.exports.getvendors=function(centre,callback){
-    Vendor.find({centreId : centre},callback);
+    Vendor.find({centreId : centre},callback).sort( { currentBalance : -1 });
 }
 
 module.exports.updateVendor=function(data,callback){
