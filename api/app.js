@@ -33,5 +33,5 @@ app.get('/',function(req,res){
 });
 
 
-app.listen(300);
+app.listen(3000);
 console.log('Running on 3000');
