@@ -12,6 +12,8 @@ var account = require('../controllers/account');
 var accountLog = require('../controllers/accountlog');
 var receivedpayment = require('../controllers/receivedpayment');
 var materialdistribution = require('../controllers/materialdistribution');
+var stock = require('../controllers/stock');
+
 
 
 
@@ -56,7 +58,7 @@ app.put('/api/vendor/',vendor.updateVendor);
 
 //app.post('/api/purchase/',purchase.purchaseEntry);
 app.get('/api/purchase/centre=:centre&fromdate=:fromdate&todate=:todate',purchase.getpurchaseEntry);
-app.post('/api/purchase/id=:id&amount=:amount',purchase.purchaseEntry);
+app.post('/api/purchase/id=:id&amount=:amount&itemId=:itemId',purchase.purchaseEntry);
 
 
 
@@ -73,14 +75,16 @@ app.post('/api/attendance/',attendance.submitAttendance);
 app.delete('/api/attendance/date=:date&centre=:centre',attendance.removeTodayAttendance);
 app.get('/api/attendance/centre=:centre&fromdate=:fromdate&todate=:todate',attendance.getAttendance);
 app.get('/api/attendancedetail/id=:id&centre=:centre&fromdate=:fromdate&todate=:todate',attendance.getEmployeeAttendance);
+app.get('/api/attendance/centre=:centre&date=:date',attendance.getTodayAttendance);
 
 //centre
 app.post('/api/store/',centre.addstore);
 app.put('/api/store/',centre.updatestore);
 app.get('/api/store/adminId=:adminId',centre.getstores);
+
+
 //login
 app.get('/api/login/centrecode=:centrecode&not=:not',centre.login);
-
 
 
 
@@ -102,10 +106,15 @@ app.post('/api/receviedpayment/centreId=:centreId&toAcId=:toAcId',receivedpaymen
 app.get('/api/receivedpayment/centre=:centre&fromdate=:fromdate&todate=:todate',receivedpayment.getreceivedPaymentEntry);
 
 
-
 //material MaterialDistribution
 
 app.post('/api/materialdistribution/centreId=:centreId&amount=:amount',materialdistribution.materialDistributionEntry);
 app.get('/api/materialdistribution/centre=:centre&fromdate=:fromdate&todate=:todate',materialdistribution.getmaterialDistributionEntry);
+
+
+//stock
+app.post('/api/stock/',stock.addStock);
+app.get('/api/stock/centreId=:centreId',stock.getStock);
+app.put('/api/stock',stock.updateStock);
 
 }

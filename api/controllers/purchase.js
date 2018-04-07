@@ -1,11 +1,14 @@
 Purchase = require('../service/purchase');
 Vendor = require('../service/vendor');
+Stock = require('../service/stock');
 
 
 //add employee
 exports.purchaseEntry = function(req,res){
   var postData=req.body.data;
   data = JSON.parse(postData);
+  quantity = Number(data["qty"]);
+  centreId = data["centreId"];
 Purchase.purchaseEntry(data,function(err,data){
   if(err)
   {
@@ -22,7 +25,21 @@ Purchase.purchaseEntry(data,function(err,data){
     }
 
     else{
-      res.send("1");
+    //  res.send("1");
+
+    Stock.updateQuantity(req.params.itemId,centreId,quantity,function(err,data){
+      if(err)
+      {
+        throw err;
+      }
+
+      else{
+        res.send("1");
+      }
+
+    });
+
+
     }
 
   });

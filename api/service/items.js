@@ -4,7 +4,7 @@ var Items = mongoose.model('Items');
 
 
 module.exports.getItems=function(centreId,centreAdminId,callback){
-  Items.find({$or: [{centreId : centreId} , {centreId : centreAdminId}]},callback);
+  Items.find({$or: [{centreId : centreId} , {centreId : centreAdminId}]},callback).sort( { itemName : 1 });
 }
 
 module.exports.getItemById=function(id,callback){

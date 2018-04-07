@@ -51,6 +51,21 @@ Attendance.getAttendance(req.params.centre,req.params.fromdate,req.params.todate
 });
 };
 
+
+exports.getTodayAttendance = function(req,res){
+Attendance.getTodayAttendance(req.params.centre,req.params.date,function(err,data){
+  if(err)
+  {
+    throw err;
+  }
+
+  else{
+    res.json(data);
+  }
+
+});
+};
+
 exports.getEmployeeAttendance = function(req,res){
 Attendance.getEmployeeAttendance(req.params.id,req.params.centre,req.params.fromdate,req.params.todate,function(err,data){
   if(err)

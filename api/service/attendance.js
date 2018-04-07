@@ -16,6 +16,10 @@ module.exports.getAttendance = function(centre,fromdate,todate,callback){
     {$group : { _id : { "employeeId" : "$employeeId", "name" : "$name"},attendanceTotal : {$sum : "$attendance"}}}],callback);
 }
 
+module.exports.getTodayAttendance = function(centre,date,callback){
+  Attendance.find({centreId : centre , date : date  },callback);
+}
+
 
 module.exports.getEmployeeAttendance = function(id,centre,fromdate,todate,callback){
   Attendance.find({$and : [{employeeId : id },{ date: { $gte: fromdate}}, {date : {$lte: todate}},{centreId : centre}]},callback).sort( { date : -1 });
