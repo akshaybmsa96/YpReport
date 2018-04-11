@@ -10,3 +10,8 @@ module.exports.purchaseEntry=function(data,callback){
 module.exports.getpurchaseEntry=function(centre,fromdate,todate,callback){
   Purchase.find({$and : [{ date: { $gte: fromdate}}, {date : {$lte: todate}},{centreId : centre} ]},callback).sort( { date : -1 });
 }
+
+
+module.exports.deletePurchaseEntry=function(id,callback){
+  Purchase.remove({_id : id },callback);
+}

@@ -6,6 +6,7 @@ var materialDistributionSchema = mongoose.Schema({
 
 
 centre : String,
+centreId : String,
 centreAdminId : String,
 date  : String,
 itemName  : String,

@@ -7,10 +7,12 @@ var receivedPaymentSchema = mongoose.Schema({
        date : String,
        amount : Number,
        fromCentre : String,
+       fromCentreId : String,
        centreId : String,
        modeOfPayment  : String,
        from  : String,
-       to  : String
+       to  : String,
+       toAcId : String
 
 }, {
   versionKey: false

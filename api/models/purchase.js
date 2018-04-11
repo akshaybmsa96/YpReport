@@ -6,7 +6,9 @@ var purchaseSchema = mongoose.Schema({
 
        date : String,
        vendorName : String,
+       vendorId : String,
        item : String,
+       itemId : String,
        qty : Number,
        discount : Number,
        amount : Number,

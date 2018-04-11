@@ -60,3 +60,52 @@ ReceivedPayment.getreceivedPaymentEntry(req.params.centre,req.params.fromdate,re
 
 });
 };
+
+
+
+//deleteReceivedPaymentEntry
+
+
+exports.deleteReceivedPaymentEntry = function(req,res){
+  var postData=req.body.data;
+  data = JSON.parse(postData);
+  amount = data["amount"];
+ReceivedPayment.deleteReceivedPaymentEntry(data["_id"],function(err,data){
+  if(err)
+  {
+    throw err;
+  }
+
+  else{
+//    res.send('1');
+
+
+Centre.updateBalance(req.params.centreId,amount,function(err,data){
+  if(err)
+  {
+    throw err;
+  }
+
+  else{
+  //  res.send('1');
+
+  Account.updateBalance(req.params.toAcId, -1 *amount ,function(err,data){
+    if(err)
+    {
+      throw err;
+    }
+
+    else{
+      res.send("1");
+    }
+
+  });
+
+  }
+
+});
+
+  }
+
+});
+};

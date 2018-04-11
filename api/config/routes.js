@@ -59,6 +59,8 @@ app.put('/api/vendor/',vendor.updateVendor);
 //app.post('/api/purchase/',purchase.purchaseEntry);
 app.get('/api/purchase/centre=:centre&fromdate=:fromdate&todate=:todate',purchase.getpurchaseEntry);
 app.post('/api/purchase/id=:id&amount=:amount&itemId=:itemId',purchase.purchaseEntry);
+app.put('/api/purchase/id=:id&amount=:amount&itemId=:itemId',purchase.deletePurchaseEntry);
+
 
 
 
@@ -104,12 +106,14 @@ app.post('/api/accountlog/',accountLog.addLog);
 
 app.post('/api/receviedpayment/centreId=:centreId&toAcId=:toAcId',receivedpayment.receivedPaymentEntry);
 app.get('/api/receivedpayment/centre=:centre&fromdate=:fromdate&todate=:todate',receivedpayment.getreceivedPaymentEntry);
+app.put('/api/receviedpayment/centreId=:centreId&toAcId=:toAcId',receivedpayment.deleteReceivedPaymentEntry);
 
 
 //material MaterialDistribution
 
 app.post('/api/materialdistribution/centreId=:centreId&amount=:amount',materialdistribution.materialDistributionEntry);
 app.get('/api/materialdistribution/centre=:centre&fromdate=:fromdate&todate=:todate',materialdistribution.getmaterialDistributionEntry);
+app.put('/api/materialdistribution/centreId=:centreId&amount=:amount',materialdistribution.deleteMaterialDistributionEntry);
 
 
 //stock

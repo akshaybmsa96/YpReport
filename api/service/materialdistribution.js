@@ -9,3 +9,7 @@ module.exports.materialDistributionEntry=function(data,callback){
 module.exports.getmaterialDistributionEntry=function(centre,fromdate,todate,callback){
   MaterialDistribution.find({$and : [{ date: { $gte: fromdate}}, {date : {$lte: todate}},{centreAdminId : centre} ]},callback).sort( { date : -1 });
 }
+
+module.exports.deleteMaterialDistributionEntry=function(id,callback){
+  MaterialDistribution.remove({_id : id},callback);
+}

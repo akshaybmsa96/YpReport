@@ -63,3 +63,52 @@ Purchase.getpurchaseEntry(req.params.centre,req.params.fromdate,req.params.todat
 
 });
 };
+
+
+//delete purchaseEntry
+
+
+exports.deletePurchaseEntry = function(req,res){
+  var postData=req.body.data;
+  data = JSON.parse(postData);
+  quantity = Number(data["qty"]);
+  centreId = data["centreId"];
+Purchase.deletePurchaseEntry(data["_id"],function(err,data){
+  if(err)
+  {
+    throw err;
+  }
+
+  else{
+  //  res.send('1');
+
+  Vendor.updateBalance(req.params.id,-1*Number(req.params.amount),function(err,data){
+    if(err)
+    {
+      throw err;
+    }
+
+    else{
+    //  res.send("1");
+
+    Stock.updateQuantity(req.params.itemId,centreId,-1*quantity,function(err,data){
+      if(err)
+      {
+        throw err;
+      }
+
+      else{
+        res.send("1");
+      }
+
+    });
+
+
+    }
+
+  });
+
+  }
+
+});
+};

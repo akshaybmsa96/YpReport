@@ -81,3 +81,65 @@ MaterialDistribution.getmaterialDistributionEntry(req.params.centre,req.params.f
 
 });
 };
+
+
+//DeleteMaterialDistributionEntry
+
+
+exports.deleteMaterialDistributionEntry = function(req,res){
+  var postData=req.body.data;
+  Jsondata = JSON.parse(postData);
+
+MaterialDistribution.deleteMaterialDistributionEntry(Jsondata["_id"],function(err,data){
+  if(err)
+  {
+    throw err;
+  }
+
+  else{
+//    res.send('1');
+
+Centre.updateBalance(req.params.centreId,-1*Number(req.params.amount),function(err,data){
+  if(err)
+  {
+    throw err;
+  }
+
+  else{
+    //res.send(Jsondata.length);
+
+    itemId = Jsondata["itemId"];
+    quantity = Number(Jsondata["qty"]);
+    centreId = Jsondata["centreAdminId"];
+
+    Stock.updateQuantity(itemId,centreId,quantity,function(err,data){
+      if(err)
+      {
+        throw err;
+      }
+
+      else{
+      //  res.send("1");
+
+      ok=1;
+      }
+
+    });
+
+    if(ok==1)
+    {
+    res.send("1");
+  }
+
+  else {
+    res.send("0");
+  }
+
+  }
+
+});
+
+  }
+
+});
+};
