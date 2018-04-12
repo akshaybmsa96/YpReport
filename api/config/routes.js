@@ -69,6 +69,7 @@ app.put('/api/purchase/id=:id&amount=:amount&itemId=:itemId',purchase.deletePurc
 //app.post('/api/expense/',expense.expenseEntry);
 app.get('/api/expense/centre=:centre&fromdate=:fromdate&todate=:todate',expense.getexpenseEntry);
 app.post('/api/expense/type=:type&id=:id&amount=:amount',expense.expenseEntry);
+app.put('/api/expense/type=:type&id=:id&amount=:amount',expense.deleteExpenseEntry);
 
 
 
