@@ -83,6 +83,24 @@ MaterialDistribution.getmaterialDistributionEntry(req.params.centre,req.params.f
 };
 
 
+//centre's deleteMaterialDistributionEntry
+
+
+exports.getCentrematerialDistributionEntry = function(req,res){
+
+MaterialDistribution.getCentrematerialDistributionEntry(req.params.centre,req.params.fromdate,req.params.todate,function(err,data){
+  if(err)
+  {
+    throw err;
+  }
+
+  else{
+    res.json(data);
+  }
+
+});
+};
+
 //DeleteMaterialDistributionEntry
 
 

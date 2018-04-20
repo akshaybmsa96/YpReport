@@ -115,6 +115,7 @@ app.put('/api/receviedpayment/centreId=:centreId&toAcId=:toAcId',receivedpayment
 app.post('/api/materialdistribution/centreId=:centreId&amount=:amount',materialdistribution.materialDistributionEntry);
 app.get('/api/materialdistribution/centre=:centre&fromdate=:fromdate&todate=:todate',materialdistribution.getmaterialDistributionEntry);
 app.put('/api/materialdistribution/centreId=:centreId&amount=:amount',materialdistribution.deleteMaterialDistributionEntry);
+app.get('/api/materialdistributionCentre/centre=:centre&fromdate=:fromdate&todate=:todate',materialdistribution.getCentrematerialDistributionEntry);
 
 
 //stock
