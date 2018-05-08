@@ -107,6 +107,7 @@ app.post('/api/accountlog/',accountLog.addLog);
 
 app.post('/api/receviedpayment/centreId=:centreId&toAcId=:toAcId',receivedpayment.receivedPaymentEntry);
 app.get('/api/receivedpayment/centre=:centre&fromdate=:fromdate&todate=:todate',receivedpayment.getreceivedPaymentEntry);
+app.get('/api/receivedpaymentcentre/centre=:centre&fromdate=:fromdate&todate=:todate',receivedpayment.getreceivedPaymentEntryCentre);
 app.put('/api/receviedpayment/centreId=:centreId&toAcId=:toAcId',receivedpayment.deleteReceivedPaymentEntry);
 
 

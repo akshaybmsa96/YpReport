@@ -61,6 +61,22 @@ ReceivedPayment.getreceivedPaymentEntry(req.params.centre,req.params.fromdate,re
 });
 };
 
+//getreceivedPaymentEntryCentre
+
+exports.getreceivedPaymentEntryCentre = function(req,res){
+ReceivedPayment.getreceivedPaymentEntryCentre(req.params.centre,req.params.fromdate,req.params.todate,function(err,data){
+  if(err)
+  {
+    throw err;
+  }
+
+  else{
+    res.json(data);
+  }
+
+});
+};
+
 
 
 //deleteReceivedPaymentEntry

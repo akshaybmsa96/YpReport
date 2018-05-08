@@ -7,7 +7,7 @@ module.exports.addStock=function(data,callback){
 }
 
 module.exports.getStock=function(centreId,callback){
-  Stock.find({centreId : centreId},callback);
+  Stock.find({centreId : centreId},callback).sort( { currentStatus : 1 });
 }
 
 module.exports.updateQuantity=function(itemId,centreId,quantity,callback){
